@@ -4,13 +4,12 @@
 SceneSettings:
   m_ObjectHideFlags: 0
   m_PVSData: 
-  m_QueryMode: 1
   m_PVSObjectsArray: []
   m_PVSPortalsArray: []
   m_OcclusionBakeSettings:
-    viewCellSize: 1
-    bakeMode: 2
-    memoryUsage: 10485760
+    smallestOccluder: 5
+    smallestHole: .25
+    backfaceThreshold: 100
 --- !u!104 &2
 RenderSettings:
   m_Fog: 0
@@ -23,6 +22,7 @@ RenderSettings:
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: .5
   m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 0}
   m_ObjectHideFlags: 0
@@ -180,6 +180,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
+  m_OcclusionCulling: 1
 --- !u!4 &422014281
 Transform:
   m_ObjectHideFlags: 0
@@ -218,12 +219,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f315c05c54204d4890b941f6c070c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objects:
-  - toto
-  - toti
-  - totu
-  - tota
-  - tot
+  characters:
+  - cid: 1
+    name: Luke
+    image: {fileID: 2800000, guid: 44cb17a33f4dd441b83c3e39ce033f30, type: 3}
+    imageB64: 
+    life: 5
+    streght: 5
+    dexterity: 5
+    consitution: 5
+    intelligence: 2
+  - cid: 2
+    name: Darth
+    image: {fileID: 2800000, guid: dc01cff7fb8d0492bb8d3b907b1e8c60, type: 3}
+    imageB64: 
+    life: 10
+    streght: 10
+    dexterity: 10
+    consitution: 10
+    intelligence: 10
 --- !u!4 &1434168326
 Transform:
   m_ObjectHideFlags: 0

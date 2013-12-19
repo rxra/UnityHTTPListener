@@ -4,9 +4,33 @@ using System.Collections.Generic;
 using System;
 using System.Threading;
 
+[System.Serializable]
+public class Character
+{
+	public int cid;
+	public string name;
+	public Texture2D image;
+	public int life;
+	public int streght;
+	public int dexterity;
+	public int consitution;
+	public int intelligence;
+
+	[HideInInspector]
+	public string imageB64
+	{
+		get
+		{
+			return _imageB64;
+		}
+	}
+
+	public string _imageB64;
+}
+
 public class MainGameObject : MonoBehaviour {
 	
-	public List<string> objects;
+	public List<Character> characters;
 	
 	private List<Action> _actions = new List<Action>();
 	private List<Action> _currentActions = new List<Action>();
@@ -25,17 +49,25 @@ public class MainGameObject : MonoBehaviour {
 		}
 	}
 	
-	public string ObjectByID(int idx)
+	public Character CharacterByID(int id)
 	{
-		if (idx<0 || idx>=objects.Count) {
-			return null;
+		foreach (Character c in characters) {
+			if (c.cid==id) {
+				return c;
+			}
 		}
-		
-		return objects[idx];
+		return null;
 	}
 	
 	void Awake () {
 		s_Instance = this;
+		foreach (Character c in MainGameObject.Instance().characters) {
+			Debug.Log(c.cid);
+			if (c._imageB64==null || c._imageB64.Length==0) {
+				byte[] data = c.image.EncodeToPNG();
+				c._imageB64 = Convert.ToBase64String(data);
+			}
+		}
 	}
 		
 	// Update is called once per frame
